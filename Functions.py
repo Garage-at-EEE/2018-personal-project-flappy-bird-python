@@ -11,32 +11,6 @@ def getHitmask(image):
     return mask
     # after iteration musk is a 2-D matix of True and False
 
-
-def playerShm(playerShm):
-    """
-    oscillates the value of playerShm['val'] between 8 and -8
-    """
-    if abs(playerShm['val']) == 8:
-        playerShm['dir'] *= -1
-
-    if playerShm['dir'] == 1:
-        playerShm['val'] += 1
-    else:
-        playerShm['val'] -= 1
-
-def getRandomPipe():
-    """returns a randomly generated pipe"""
-    # y of gap between upper and lower pipe
-    gapY = random.randrange(0, int(BASEY * 0.6 - PIPEGAPSIZE))
-    gapY += int(BASEY * 0.2) # minimum height of the upper pipe
-    pipeHeight = IMAGES['pipe'][0].get_height()
-    pipeX = SCREENWIDTH
-
-    return [
-        {'x': pipeX, 'y': gapY - pipeHeight},  # upper pipe the position should be at the left top corner of the graph
-        {'x': pipeX, 'y': gapY + PIPEGAPSIZE}, # lower pipe
-    ]
-
 def checkCrash(player, upperPipes, lowerPipes):
     """returns True if player collders with base or pipes."""
     pi = player['index']
@@ -86,3 +60,28 @@ def pixelCollision(rect1, rect2, hitmask1, hitmask2):
             if hitmask1[x1+x][y1+y] and hitmask2[x2+x][y2+y]:
                 return True
     return False
+
+def playerShm(playerShm):
+    """
+    oscillates the value of playerShm['val'] between 8 and -8
+    """
+    if abs(playerShm['val']) == 8:
+        playerShm['dir'] *= -1
+
+    if playerShm['dir'] == 1:
+        playerShm['val'] += 1
+    else:
+        playerShm['val'] -= 1
+
+def getRandomPipe():
+    """returns a randomly generated pipe"""
+    # y of gap between upper and lower pipe
+    gapY = random.randrange(0, int(BASEY * 0.6 - PIPEGAPSIZE))
+    gapY += int(BASEY * 0.2) # minimum height of the upper pipe
+    pipeHeight = IMAGES['pipe'][0].get_height()
+    pipeX = SCREENWIDTH
+
+    return [
+        {'x': pipeX, 'y': gapY - pipeHeight},  # upper pipe the position should be at the left top corner of the graph
+        {'x': pipeX, 'y': gapY + PIPEGAPSIZE}, # lower pipe
+    ]

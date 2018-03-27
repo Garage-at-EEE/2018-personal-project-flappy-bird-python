@@ -68,13 +68,6 @@ def main():
         ##################################
         # three stages to determine the process of the game.
         movementInfo = showWelcomeAnimation() 
-        '''
-        return {
-            'playery': playery + playerShmVals['val'],  # get y value and assign to key playery standard y + harmonic motion
-            'basex': basex,                             # x value of the base note that base is moving ( sudo moving )
-            'playerIndexGen': playerIndexGen,           # get wings state
-        }
-        '''
         crashInfo = mainGame(movementInfo)
         showGameOverScreen(crashInfo)
 
@@ -101,79 +94,7 @@ def showWelcomeAnimation():
 
     while True: # start the game
         for event in pygame.event.get():
-            '''
-            This function will return when player stroke 'space' key
-            '''
-            '''
-            Event will include mouse position and key stroke(UP and DOWN) together with some value 
-            e.g. mouse X,Y position and key name.
-            ##########################################################################################
-                                            windows active event
-
-                <Event(1-ActiveEvent {'gain': 1, 'state': 1})> focus on screen mouse move in
-                <Event(1-ActiveEvent {'gain': 0, 'state': 1})> focus on screen mouse move out
-                <Event(1-ActiveEvent {'gain': 0, 'state': 2})> unfocus on screen app not running
-                <Event(1-ActiveEvent {'gain': 1, 'state': 6})> call back from unfocus
-                -----------------------------------------------------------------------------------
-                                            mouse moving event =              
-                            {
-                                pos: position
-                                rel: relative position 
-                                buttons: {
-                                    element: {
-                                        x:left,
-                                        y:middle,
-                                        z:right
-                                    }
-                                    value: {
-                                        1: active,
-                                        0: inactive
-                                    }
-                                }
-                            }
-                <Event(4-MouseMotion {'pos': (287, 405), 'rel': (20, -106), 'buttons': (0, 0, 0)})> 
-                <Event(4-MouseMotion {'pos': (271, 403), 'rel': (-16, -2), 'buttons': (0, 0, 0)})>
-                -----------------------------------------------------------------------------------
-                                            holding mouse event
-                <Event(4-MouseMotion {'pos': (248, 401), 'rel': (10, 0), 'buttons': (1, 0, 0)})>
-                <Event(4-MouseMotion {'pos': (268, 401), 'rel': (20, 0), 'buttons': (1, 0, 0)})>
-                <Event(4-MouseMotion {'pos': (286, 400), 'rel': (18, -1), 'buttons': (1, 0, 0)})>
-                -----------------------------------------------------------------------------------
-                                            stroke keyboard event = 
-                            {
-                                mod: {
-                                meaning: existing key stroke
-                                value:{
-                                    1:  left-shift,
-                                    2:  right-shift,
-                                    256:    left-alt
-                                    257: left-shift + left-alt
-                                    }
-                                }   
-                                unicode: value of the key e.g. a,b,c,d
-                                key: unicode number       e.g. 97,98,99,100
-                                scancode: key position on the keyboard
-                            }
-                <Event(2-KeyDown {'unicode': '', 'key': 304, 'mod': 0, 'scancode': 42})>
-                <Event(3-KeyUp {'key': 304, 'mod': 0, 'scancode': 42})>
-                -----------------------------------------------------------------------------------
-                                            left mouse click event
-
-                <Event(5-MouseButtonDown {'pos': (194, 417), 'button': 1})> 
-                <Event(4-MouseMotion {'pos': (199, 417), 'rel': (5, 0), 'buttons': (1, 0, 0)})>
-                <Event(4-MouseMotion {'pos': (204, 416), 'rel': (5, -1), 'buttons': (1, 0, 0)})>
-                <Event(6-MouseButtonUp {'pos': (204, 416), 'button': 1})>
-                -----------------------------------------------------------------------------------
-                                           
-            ##########################################################################################
-            pygame.event.get will update repeatedly when the game is running
-            '''
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
-                '''
-                QUIT is the event when you click on the 'X' button
-                event.type KEYDOWN is the event when you press down a button 
-                event.key K_ESCAPE is the 'Esc' key
-                '''
                 pygame.quit()
                 sys.exit()
 
